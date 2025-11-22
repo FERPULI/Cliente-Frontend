@@ -1,0 +1,249 @@
+/* --- VARIABLES Y ESTILOS GLOBALES --- */
+:root {
+    --color-primary: #2c3e50; /* Azul Pizarra Oscuro */
+    --color-primary-light: #34495e; /* Versión más clara del primario para hovers */
+    --color-accent: #3498db; /* Un azul más brillante para acentos sutiles */
+    --color-secondary: #95a5a6; /* Gris medio para texto secundario */
+    --color-background: #f4f7f9; /* Fondo general muy claro (casi blanco) */
+    --color-surface: #ffffff; /* Superficies como tablas y modales */
+    --color-text: #34495e; /* Texto principal oscuro y suave */
+    --color-border: #e3e6e8; /* Borde sutil */
+    --shadow: 0 2px 8px rgba(44, 62, 80, 0.1); /* Sombra más suave */
+    --border-radius: 6px; /* Un radio de borde ligeramente más nítido */
+}
+
+/* --- RESET Y CONFIGURACIÓN GLOBAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Helvetica Neue', sans-serif; /* Tipografía más neutra y profesional */
+    background-color: var(--color-background);
+    color: var(--color-text);
+    padding: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--color-surface);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--color-border); /* Borde sutil para el contenedor principal */
+}
+
+/* --- CABECERA Y TÍTULOS --- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+/* --- BARRA DE HERRAMIENTAS Y BOTONES --- */
+.toolbar {
+    margin-bottom: 2rem;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.btn {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-transform: uppercase; /* Da un toque más formal */
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-primary-light);
+}
+
+.btn-secondary {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    border-color: var(--color-border);
+}
+.btn-secondary:hover {
+    background-color: #f8f9fa;
+    border-color: #d8dde1;
+}
+
+/* --- TABLA DE DATOS --- */
+.tabla-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: middle;
+}
+
+thead th {
+    background-color: var(--color-background);
+    font-weight: 600;
+    color: var(--color-text);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+tbody tr {
+    transition: background-color 0.15s ease-in-out;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+td .btn {
+    background: transparent;
+    border: none;
+    color: var(--color-secondary);
+    padding: 0.4rem;
+}
+td .btn:hover {
+    color: var(--color-accent);
+}
+
+/* --- FORMULARIOS Y CAMPOS DE ENTRADA --- */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: var(--color-surface);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+}
+
+/* --- MODAL --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 40, 50, 0.65); /* Overlay más oscuro */
+    z-index: 1000;
+    display: none;
+    place-items: center;
+    padding: 1rem;
+}
+
+#modalEditar.activo {
+    display: grid;
+}
+
+.modal-content {
+    background: var(--color-surface);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+}
+
+.modal-content h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+/* --- AJUSTES RESPONSIVOS --- */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    .container {
+        padding: 1.5rem 1rem;
+    }
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .search-bar {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+}
